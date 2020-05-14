@@ -13,6 +13,9 @@ io.on('connection', (socket) => {
     console.log('name : ', msg);
     socket.broadcast.emit('name-clien', msg)
   });
+  socket.on('watch-server', (status) => {
+    socket.broadcast.emit('watch-c', status)
+    });
 });
 
 http.listen(3000, () => {

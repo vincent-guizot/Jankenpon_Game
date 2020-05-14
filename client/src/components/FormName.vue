@@ -6,12 +6,14 @@
         </div>
         <form @submit.prevent='addName'>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Enter your username" aria-describedby="button-addon2" v-model='pName'>
+                <input type="text" class="form-control" placeholder="Recipient's username" required                 v-model='pName'>
             <div class="input-group-append">
                 <button class="btn btn-secondary" type="submit" id="button-addon2">Lets Play</button>
             </div>
             </div>
         </form>
+        <p v-if="watchName">Another player is typing..</p>
+        <p v-if="startPlay">Another player is typing..</p>
         <ul v-for="(p , index) in players" :key="index">
             <li>{{p.name}}</li>
         </ul>
@@ -27,8 +29,17 @@ export default {
     data(){
         return {
             players:[],
-            pName: ''
+            pName: '',
+            watchName: false,
+            startPlay: false
         }
+    },
+    watch: {
+        pName(){
+            console.log('watchName')
+            const status = !this.pName ? false : true
+            socket.emit('watch-server', status)
+        },
     },
     methods: {
         addName(){
@@ -36,8 +47,7 @@ export default {
                 name: this.pName
             }
             this.players.push(temp)
-            socket.emit('name', temp)
-            console.log(temp)
+            socket.emit('name', temp);
             this.pName= ''
         }
     },
@@ -47,8 +57,13 @@ export default {
                 name : data.name
             }
             this.players.push(temp)
-            console.log(this.players)
-        })
+            console.log(this.players.name)
+        });
+
+        socket.on('watch-c', data => {
+            console.log('watchname', data)
+            this.watchName = data
+        });
     }
 }
 </script>
