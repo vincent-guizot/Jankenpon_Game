@@ -1,14 +1,24 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" class="container">
+    <FormName></FormName>
   </div>
 </template>
 
+<script>
+import FormName from './components/FormName.vue'
+
+export default {
+  components: {
+    FormName
+  }
+}
+</script>
+
 <style lang="scss">
+body{
+  background: url('https://png.pngtree.com/thumb_back/fw800/background/20190819/pngtree-pink-sakura-flower--cherry-petal-pattern-wallpaper-background-image_300417.jpg');
+  background-size: cover;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
