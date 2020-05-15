@@ -4,18 +4,16 @@ var io = require('socket.io')(http);
 
 io.on('connection', (socket) => {
   console.log('a user connected'); 
-  socket.on('chat', (msg) => {
-    console.log('msg', msg);
-    socket.broadcast.emit('chat-clien', msg)
-  });
   
-  socket.on('name', (msg) => {
-    console.log('name : ', msg);
-    socket.broadcast.emit('name-clien', msg)
+  socket.on('handSubmitted', (hand) => {
+    console.log(hand)
+    socket.broadcast.emit('sendOpponentHand', hand)
   });
-  socket.on('watch-server', (status) => {
-    socket.broadcast.emit('watch-c', status)
-    });
+
+  socket.on('aPlayerJoined', (player) => {
+    console.log(player)
+    socket.broadcast.emit('sendJoinedPlayer', player)
+  });
 });
 
 http.listen(3000, () => {
