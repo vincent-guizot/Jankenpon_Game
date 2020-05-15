@@ -25,19 +25,19 @@
                 <div class="form-check">
                     <input class="form-check-input" type="radio" id="exampleRadios1" value="rock" v-model="hand" name="hand" required>
                     <label class="form-check-label" for="exampleRadios1">
-                        Rock
+                        Rock <i class="fas fa-hand-rock"></i> <i class="far fa-hand-rock"></i>
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" id="exampleRadios2" value="paper" v-model="hand" name="hand" required>
                     <label class="form-check-label" for="exampleRadios2">
-                        Paper
+                        Paper <i class="fas fa-hand-paper"></i> <i class="far fa-hand-paper"></i>
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" id="exampleRadios3" value="scissors" v-model="hand" name="hand" required>
                     <label class="form-check-label" for="exampleRadios3">
-                        Scissors
+                        Scissors <i class="fas fa-hand-scissors"></i> <i class="far fa-hand-scissors"></i>
                     </label>
                 </div>
 
@@ -63,9 +63,9 @@
                 <p v-if="!opponentHand">Please wait your opponent</p>
                 <div v-if="hand && opponentHand">
                     <b>
-                        <p v-if="opponentHand === hand">Draw</p>
-                        <p v-if="(opponentHand === 'scissors' && hand === 'rock') || (opponentHand === 'rock' && hand === 'paper') || (opponentHand === 'paper' && hand === 'scissors')">You Win</p>
-                        <p v-if="(hand === 'scissors' && opponentHand === 'rock') || (hand === 'rock' && opponentHand === 'paper') || (hand === 'paper' && opponentHand === 'scissors')">You Lose</p>
+                        <p v-if="opponentHand === hand" style="color: #565656">Draw</p>
+                        <p v-if="(opponentHand === 'scissors' && hand === 'rock') || (opponentHand === 'rock' && hand === 'paper') || (opponentHand === 'paper' && hand === 'scissors')" style="color: #0cb04a">You Win</p>
+                        <p v-if="(hand === 'scissors' && opponentHand === 'rock') || (hand === 'rock' && opponentHand === 'paper') || (hand === 'paper' && opponentHand === 'scissors')" style="color: #ff3a2f">You Lose</p>
                     </b>
                 </div>
             </div>
