@@ -1,16 +1,11 @@
 <template>
   <div id="app" class="container">
-    <FormName></FormName>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import FormName from './components/FormName.vue'
-
 export default {
-  components: {
-    FormName
-  }
 }
 </script>
 
